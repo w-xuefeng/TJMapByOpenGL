@@ -1,5 +1,5 @@
 # TJMapByOpenGL
-🗺 TianJin Map useing OpenGL
+🗺 TianJin Map using OpenGL
 
 天津地图
 
