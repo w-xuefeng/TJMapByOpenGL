@@ -61,13 +61,13 @@ void init(void)
     //初始化观察值
     glMatrixMode(GL_PROJECTION);                  //将矩阵模式设为投影
     glLoadIdentity();                             //对矩阵进行单位化    
-	//glOrtho(110.0, 118.0, 30.0, 38.0, -1.0, 1.0);
-	glOrtho(116.714523, 118.078628, 38.561241, 40.257573, -1.0, 1.0); //构造平行投影矩阵
+    //glOrtho(110.0, 118.0, 30.0, 38.0, -1.0, 1.0);
+    glOrtho(116.714523, 118.078628, 38.561241, 40.257573, -1.0, 1.0); //构造平行投影矩阵
 }
 int main(int argc, char **argv)
 {
     //数据文件请到http://files.cnblogs.com/opengl/HenanCounty.rar下载放到D盘根目录下并解压
-    char *filename = "Henan.txt";
+    char *filename = "tianjin.txt";
 
     polys = ReadMapData(filename);
     glutInit(&argc, argv);
