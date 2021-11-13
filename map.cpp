@@ -1,21 +1,22 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <GL/glut.h>
+#include <GL/glut.h> // windows ç³»ç»Ÿä½¿ç”¨è¿™ä¸ª
+// #include <GLUT/glut.h> // macOS ç³»ç»Ÿä½¿ç”¨è¿™ä¸ª
 using namespace std;
 
 class MapPoint
 {
-  public:
+public:
     double longitude;
     double latitude;
 };
 class Polygon
 {
-  public:
-    vector<MapPoint> points; //¶à±ßĞÎµÄ¶¥µãĞòÁĞ
+public:
+    vector<MapPoint> points; // å¤šè¾¹å½¢çš„é¡¶ç‚¹åºåˆ—
 };
-vector<Polygon *> polys; //¶à±ßĞÎ¼¯ºÏ
+vector<Polygon *> polys; // å¤šè¾¹å½¢é›†åˆ
 vector<Polygon *> ReadMapData(char *filename)
 {
     int PointCount;
@@ -39,7 +40,7 @@ vector<Polygon *> ReadMapData(char *filename)
 void display(void)
 {
     glClear(GL_COLOR_BUFFER_BIT);
-    //ÓÃÀ¶É«É«»æÖÆ¸÷Ê¡±ß½ç
+    // ç”¨è“è‰²è‰²ç»˜åˆ¶å„çœè¾¹ç•Œ
     glColor3f(0.0, 0.0, 1.0);
     glPolygonMode(GL_BACK, GL_LINE);
     for (int i = 0; i < polys.size(); i++)
@@ -56,27 +57,26 @@ void display(void)
 }
 void init(void)
 {
-    //ÉèÖÃ±³¾°ÑÕÉ«
+    // è®¾ç½®èƒŒæ™¯é¢œè‰²
     glClearColor(1.0, 1.0, 1.0, 0.0);
-    //³õÊ¼»¯¹Û²ìÖµ
-    glMatrixMode(GL_PROJECTION);                  //½«¾ØÕóÄ£Ê½ÉèÎªÍ¶Ó°
-    glLoadIdentity();                             //¶Ô¾ØÕó½øĞĞµ¥Î»»¯    
-    //glOrtho(110.0, 118.0, 30.0, 38.0, -1.0, 1.0);
-    glOrtho(116.714523, 118.078628, 38.561241, 40.257573, -1.0, 1.0); //¹¹ÔìÆ½ĞĞÍ¶Ó°¾ØÕó
+    // åˆå§‹åŒ–è§‚å¯Ÿå€¼
+    glMatrixMode(GL_PROJECTION); // å°†çŸ©é˜µæ¨¡å¼è®¾ä¸ºæŠ•å½±
+    glLoadIdentity();            // å¯¹çŸ©é˜µè¿›è¡Œå•ä½åŒ–
+    // glOrtho(110.0, 118.0, 30.0, 38.0, -1.0, 1.0);
+    glOrtho(116.714523, 118.078628, 38.561241, 40.257573, -1.0, 1.0); // æ„é€ å¹³è¡ŒæŠ•å½±çŸ©é˜µ
 }
 int main(int argc, char **argv)
 {
-    //Êı¾İÎÄ¼şÇëµ½http://files.cnblogs.com/opengl/HenanCounty.rarÏÂÔØ·Åµ½DÅÌ¸ùÄ¿Â¼ÏÂ²¢½âÑ¹
     char *filename = "tianjin.txt";
 
     polys = ReadMapData(filename);
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); //µ¥»º´æºÍRGB
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // å•ç¼“å­˜å’ŒRGB
     glutInitWindowSize(380, 500);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("µØÍ¼»æÖÆ");
+    glutCreateWindow("åœ°å›¾ç»˜åˆ¶");
     init();
-    glutDisplayFunc(display); //ÏÔÊ¾»Øµ÷º¯Êı
+    glutDisplayFunc(display); // æ˜¾ç¤ºå›è°ƒå‡½æ•°
     glutMainLoop();
     return 0;
 }
